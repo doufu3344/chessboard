@@ -1,7 +1,6 @@
 package com.df.chessboard;
 
 import com.df.computer.computer;
-import com.df.computer.valueEvaluate;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -13,7 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -203,18 +201,6 @@ public class Chessboard extends Activity implements OnClickListener{
 							Who =0;		
 						}
 				}
-				
-				EditText t2= (EditText)this.findViewById(R.id.editText1);
-				valueEvaluate ve = new valueEvaluate();
-				ve.Evaluation(view.GetList(), 1);
-				String str="";
-				for(int i=1;i<8;++i)
-					//str += String.valueOf(ve.TypeCount[0][i]);
-					str += String.valueOf(ve.TypeCount[0][i]);
-				str += "#";
-				for(int i=1;i<8;++i)
-					str += String.valueOf(ve.TypeCount[1][i]);
-				t2.setText(str);
 				
 				
 			}//人机模式		
