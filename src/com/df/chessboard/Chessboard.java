@@ -23,7 +23,7 @@ public class Chessboard extends Activity implements OnClickListener{
 	private static int Who;//当前下棋人
 	private static int Winner;//胜出者
 	private static boolean IsBegin;
-	private static int Mode = 1; //0-人机,1-人人联网,2-人人
+	private static int Mode = 0; //0-人机,1-人人联网,2-人人
 	//private static int Rule = 0; //0-无紧手，1-有禁手
 	//private static int Leval = 0; //0-简单，1-容易，2-困难
 	private static int First = 0;//0-0黑子先,1-白子先
@@ -193,9 +193,9 @@ public class Chessboard extends Activity implements OnClickListener{
 	
 				Player player = new Player();
 				player.SetList(view.GetList());
-				player.computerCoor(Who,Mode);
 				
 				while(Winner == -1 && Who ==1){//While语句测试时用，当真正ai算法开发后可以改if，不改也可
+					player.computerCoor(Who,Mode);
 					if(view.InsertChess(Player.Geta(),Player.Getb(),Who))
 						if((Winner = view.GetWin()) != 0){
 							IsBegin = true;
@@ -217,9 +217,9 @@ public class Chessboard extends Activity implements OnClickListener{
 				}
 				Player player = new Player();
 				player.SetList(view.GetList());
-				player.computerCoor(Who,Mode);
 				
 				while(Winner == -1 && Who ==1){//While语句测试时用，当真正ai算法开发后可以改if，不改也可
+					player.computerCoor(Who,Mode);
 					if(view.InsertChess(Player.Geta(),Player.Getb(),Who))
 						if((Winner = view.GetWin()) != 0){
 							IsBegin = true;
