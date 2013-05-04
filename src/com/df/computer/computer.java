@@ -2,12 +2,12 @@ package com.df.computer;
 
 public class computer {
 	
-	private static int a;
-	private static int b;
+	private static int a=14;
+	private static int b=14;
 	private static int[][] list;
-	
+	public static int tmp = 0;
 	public static void computePositon(int turnto){
-		int min = -10000;
+		int min = -90000;
 		
 		valueEvaluate value = new valueEvaluate();
 
@@ -15,7 +15,7 @@ public class computer {
 			for(int j=0;j<15;++j){
 				if(list[i][j] == 0){
 					list[i][j] = 2;
-					int tmp = value.Evaluation(list, 1);
+					tmp = value.Evaluation(list, 1);
 					if(tmp > min){
 						a=i;
 						b=j;

@@ -109,10 +109,10 @@ public class valueEvaluate {
 				return -9999;
 		}
 		
-	//	if(TypeCount[White][Four_sleep]>1)
-	//		TypeCount[White][Four_live]++;
-	//	if(TypeCount[Black][Four_sleep]>1)
-	//		TypeCount[Black][Four_live]++;
+		if(TypeCount[White][Four_sleep]>1)
+			TypeCount[White][Four_live]++;
+		if(TypeCount[Black][Four_sleep]>1)
+			TypeCount[Black][Four_live]++;
 		
 		int WTotalV=0;
 		int BTotalV=0;
@@ -122,6 +122,10 @@ public class valueEvaluate {
 			if(TypeCount[Black][Four_live]>0)
 				return -9970;
 			if(TypeCount[Black][Four_sleep]>0)
+				return -9960;
+			if(TypeCount[Black][Three_live]>1)
+				return -9960;
+			if(TypeCount[Black][Three_live]>0)
 				return -9960;
 				
 			if(TypeCount[White][Four_live]>0)

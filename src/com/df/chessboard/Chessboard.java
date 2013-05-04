@@ -1,6 +1,7 @@
 package com.df.chessboard;
 
 import com.df.computer.computer;
+import com.df.player.Player;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,7 +23,7 @@ public class Chessboard extends Activity implements OnClickListener{
 	private static int Who;//当前下棋人
 	private static int Winner;//胜出者
 	private static boolean IsBegin;
-	private static int Mode = 0; //0-人机,1-人人联网,2-人人
+	private static int Mode = 1; //0-人机,1-人人联网,2-人人
 	//private static int Rule = 0; //0-无紧手，1-有禁手
 	//private static int Leval = 0; //0-简单，1-容易，2-困难
 	private static int First = 0;//0-0黑子先,1-白子先
@@ -190,72 +191,41 @@ public class Chessboard extends Activity implements OnClickListener{
 					}
 				}
 	
-				computer computer = new com.df.computer.computer();
-				computer.SetList(view.GetList());
+				Player player = new Player();
+				player.SetList(view.GetList());
+				player.computerCoor(Who,Mode);
 				
 				while(Winner == -1 && Who ==1){//While语句测试时用，当真正ai算法开发后可以改if，不改也可
-					com.df.computer.computer.computePositon(Who);//电脑计算坐标
-					if(view.InsertChess(com.df.computer.computer.Geta(),com.df.computer.computer.Getb(),Who))
+					if(view.InsertChess(Player.Geta(),Player.Getb(),Who))
 						if((Winner = view.GetWin()) != 0){
 							IsBegin = true;
 							Who =0;		
 						}
 				}
 				
-				
+				TextView tv=(TextView)this.findViewById(R.id.textView2);
+				tv.setText(String.valueOf(computer.tmp));					
 			}//人机模式		
-	
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			if(Mode == 1){
-			
+				if(Who==0){
+					if(view.InsertChess(event.getRawX(),event.getRawY(),Who)){
+						if((Winner = view.GetWin()) != 0){
+							IsBegin = true;
+							Who =1;
+						}
+					}
+				}
+				Player player = new Player();
+				player.SetList(view.GetList());
+				player.computerCoor(Who,Mode);
 				
-			/*********************************蓝牙联网对战**********************************\	
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************
-			**********************************蓝牙联网对战**********************************			                 
-			\*********************************蓝牙联网对战**********************************/	
-			
-			
+				while(Winner == -1 && Who ==1){//While语句测试时用，当真正ai算法开发后可以改if，不改也可
+					if(view.InsertChess(Player.Geta(),Player.Getb(),Who))
+						if((Winner = view.GetWin()) != 0){
+							IsBegin = true;
+							Who =0;		
+						}
+				}
 			}
 			if(Mode == 2){
 				if(view.InsertChess(event.getRawX(),event.getRawY(),Who)){

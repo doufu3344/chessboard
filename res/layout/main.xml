@@ -59,4 +59,15 @@
         android:layout_centerHorizontal="true"
         android:text="@string/replay" />
 
+     <TextView
+         android:id="@+id/textView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/undo"
+         android:layout_alignRight="@+id/undo"
+         android:text="TextView"
+         android:textColor="@android:color/black"
+         android:textColorLink="@android:color/black"
+         android:textSize="15sp" />
+
 </RelativeLayout>
